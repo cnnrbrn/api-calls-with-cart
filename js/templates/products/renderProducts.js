@@ -2,14 +2,13 @@ import { getDescription } from "../../helpers/products.js";
 
 export function renderProducts(container, products) {
   container.innerHTML = "";
-  container.classList.add("grid");
   const divs = products.map(createProduct);
   divs.forEach((div) => container.append(div));
 }
 
 function createProduct(product) {
   const col = document.createElement("div");
-  col.classList.add("g-col-12", "g-col-md-4", "g-col-lg-3");
+  col.classList.add("col-12", "col-md-4", "col-lg-3");
   const card = document.createElement("div");
   card.classList.add("card", "d-flex", "flex-column");
   col.append(card);

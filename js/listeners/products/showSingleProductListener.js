@@ -5,7 +5,7 @@ export function showSingleProductListener() {
   window.addEventListener("DOMContentLoaded", () => {
     const id = getQueryParam("id");
     if (!id) {
-      window.location.href = "/";
+      return (window.location.href = "/");
     }
     displaySingleProduct(id);
   });

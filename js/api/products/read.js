@@ -1,29 +1,25 @@
 import { BASE_URL } from "../../constants/api.js";
 
 export async function getProducts() {
-  const url = `${BASE_URL}products`;
-  const response = await fetch(url);
+	const url = `${BASE_URL}products`;
+	const response = await fetch(url);
 
-  const json = await response.json();
+	if (response.ok) {
+		const json = await response.json();
+		return json;
+	}
 
-  console.log(json);
-
-  if (response.ok) {
-    return { products: json };
-  }
-
-  throw new Error(json.message);
+	throw new Error("There was an error fetching the products");
 }
 
 export async function getProduct(id) {
-  const url = `${BASE_URL}products/${id}`;
-  const response = await fetch(url);
+	const url = `${BASE_URL}products/${id}`;
+	const response = await fetch(url);
 
-  const json = await response.json();
+	if (response.ok) {
+		const json = await response.json();
+		return json;
+	}
 
-  if (response.ok) {
-    return json;
-  }
-
-  throw new Error(json.message);
+	throw new Error(`There was an error fetching the product with id: ${id}`);
 }

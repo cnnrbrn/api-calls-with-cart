@@ -3,12 +3,13 @@ import { renderProducts } from "../../templates/index.js";
 import { displayMessage } from "../common/displayMessage.js";
 
 export default async function displayProducts() {
-  const container = document.querySelector("#productContainer");
+	const container = document.querySelector("#productContainer");
 
-  try {
-    const { products } = await getProducts();
-    renderProducts(container, products);
-  } catch (error) {
-    displayMessage("danger", error, container);
-  }
+	try {
+		const products = await getProducts();
+		renderProducts(container, products);
+	} catch (error) {
+		console.log(error);
+		displayMessage("success", error, container);
+	}
 }
